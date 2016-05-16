@@ -20,7 +20,6 @@ if ($archivo == "true")
 {	
 	if ( move_uploaded_file( $tempNombre, $agregar)) 
 	{
-		echo " Ha sido subido satisfactoriamente";
 		$url=$agregar;
 	}
 else {
@@ -54,8 +53,7 @@ function subirArchivo($nombre,$tamaño,$tempNombre,$tipo)// ($_FILES['uploadedfil
 	{
 		if ( move_uploaded_file( $tempNombre, $agregar))
 		{
-			echo " Ha sido subido satisfactoriamente";
-			$url=$agregar;
+		  $url=$agregar;
 		}
 		else {
 			echo "Error al subir el archivo";

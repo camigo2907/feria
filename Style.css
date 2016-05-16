@@ -1,0 +1,45 @@
+ <style type="text/css">
+.classname {
+	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	box-shadow:inset 0px 0px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fff), color-stop(1, #fff) );
+	background:-moz-linear-gradient( center top, #fff 5%, #fff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fff');
+	background-color:#fff;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	display:inline-block;
+	color:#050506;
+	height:40px;
+	line-height:40px;
+	width:200px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0px 0px 0px #ffffff;
+	border: solid #e0e2e5 1px;
+	
+}
+.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fff), color-stop(1, #fff) );
+	background:-moz-linear-gradient( center top, #fff 5%, #fff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#e0e2e5');
+	background-color:#e0e2e5;
+	text-color:#050506;
+}.classname:active {
+	position:relative;
+	top:1px;
+
+}
+</style>

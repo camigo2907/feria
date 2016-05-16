@@ -22,7 +22,42 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+
 //index
-$string['Subir_Proyecto']="Subir Proyecto";
-$string['Hola']="Hola";
+$string['inicio']="Home";
+$string['subir_proyecto']="Upload Project";
+$string['explorar']="Explore";
+$string['mi_perfil']="My Profile";
+$string['buscar']="Search Projects...";
+$string['titulo']="Projects fair";
+
 //FormularioProyecto
+$string['nombre_proyecto']="Project's name";
+$string['descripcion']="Description";
+$string['categoria']="Category";
+$string['arte']="Art";
+$string['biologia']="Biology";
+$string['deporte']="Sport";
+$string['fisica']="Pysics";
+$string['historia']="History";
+$string['matematicas']="Math";
+$string['medio']="Environment";
+$string['musica']="Music";
+$string['negocios']="Business";
+$string['quimica']="Chemistry";
+$string['foto']="Photo";
+$string['archivo']="File";
+$string['url_video']="Video URL";
+$string['campos_obligatorios']="Required fields";
+$string['enviar']="Send"; 
+
+//GuardarProyecto
+$string['subido_bien']="It has been uploaded successfully";
+
+//FeriaLocalLib
+$string['archivo_mayor_200']="The file is larger than 200KB , you must reduce it before uploading";
+$string['formato_imagen']="Your file must be JPG or GIF. Other files are not allowed";
+$string['error_subir_archivo']="Error uploading file";
+$string['archivo_mayor_500']="The file is larger than 500KB , you must reduce it before uploading";
+
+

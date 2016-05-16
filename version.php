@@ -13,12 +13,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * @package   local_feria
-* @copyright 2016, Catalina Amigo Martinez <camigomartinez@gmail.com>
-* @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
 /**
  *
  * @package local
@@ -29,7 +23,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2016050707; //YYYYMMDD
+$plugin->version   = 2016051602; //YYYYMMDD
 $plugin->requires  = 2015111603;
 //$plugin->cron      = 0;
 $plugin->component = 'local_feria';

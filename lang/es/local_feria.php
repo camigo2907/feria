@@ -23,5 +23,39 @@
 defined('MOODLE_INTERNAL') || die();
 
 //index
-$string['Subir_Proyecto']="Subir Proyecto";
+$string['inicio']="Inicio";
+$string['subir_proyecto']="Subir proyecto";
+$string['explorar']="Explorar";
+$string['mi_perfil']="Mi perfil";
+$string['buscar']="Buscar proyectos";
+$string['titulo']="Feria de Proyectos";
+
 //FormularioProyecto
+$string['nombre_proyecto']="Nombre proyecto";
+$string['descripcion']="Descripci&oacuten";
+$string['categoria']="Categor&iacutea";
+$string['arte']="Arte";
+$string['biologia']="Biolog&iacutea";
+$string['deporte']="Deportes";
+$string['fisica']="F&iacutesica";
+$string['historia']="Historia";
+$string['matematicas']="Matem&aacuteticas";
+$string['medio']="Medio ambiente";
+$string['musica']="M&uacutesica";
+$string['negocios']="Negocios";
+$string['quimica']="Qu&iacutemica";
+$string['foto']="Foto";
+$string['archivo']="Archivo";
+$string['url_video']="URL video";
+$string['campos_obligatorios']="Campos obligatorios";
+$string['enviar']="Enviar"; 
+
+//GuardarProyecto
+$string['subido_bien']=" Ha sido subido satisfactoriament";
+
+//FeriaLocalLib
+$string['archivo_mayor_200']="El archivo es mayor que 200KB, debes reducirlo antes de subirlo ";
+$string['fomrato_imagen']="Tu archivo tiene que ser PDF. Otros archivos no son permitidos";
+$string['error_subir_archivo']="Error al subir el archivo";
+$string['archivo_mayor_500']="El archivo es mayor que 500KB, debes reducirlo antes de subirlo";
+

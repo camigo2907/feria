@@ -22,10 +22,7 @@
  */
 // Minimum for Moodle to work, the basic libraries
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
-
-// Parameter passed from the url.
-$name = required_param('name', PARAM_TEXT);
-
+include('Style.css');
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance();
 $PAGE->set_context($context);
@@ -33,15 +30,32 @@ $PAGE->set_context($context);
 // Check that user is logued in the course.
 require_login();
 
-// Page navigation and URL settings.
-$PAGE->set_url(new moodle_url('/local/feria', array('filter'=>$name)));
+// Page navigation and URL settin;
+$PAGE->set_url(new moodle_url('/local/feria/index.php'));
 $PAGE->set_pagelayout('incourse');
-$PAGE->set_title('Feria de Proyectos');
-// Show the page header
+$PAGE->set_title(get_string("titulo","local_feria"));
 
-// Here goes the content
+//
+$urlFormularioProyecto= new moodle_url("/local/feria/FormularioProyecto.php");
+
+echo'<form action="guardarproyecto.php" method="post" >
+		<table align="center">
+		<tr>
+		<td><td><a href="'.new moodle_url("/local/feria/index.php").'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
+		<td><td><a href="" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
+		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
+		<td><input type="image" src="lupa.png" width="25" height="25></td>
+		<td><a href=""></a></td>
+		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
+		<td><a href="'.new moodle_url("/local/feria/Explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
+		</tr>
+		</table>
+		</form>';
+echo '';
+// Show the page header
 echo $OUTPUT->header();
-echo '<a href="FormularioProyecto.php">Subir Proyecto</a>';
+// Here goes the content
+
 // Show the page footer
 echo $OUTPUT->footer();
 
