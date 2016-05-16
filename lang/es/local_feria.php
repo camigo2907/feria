@@ -29,7 +29,7 @@ $string['explorar']="Explorar";
 $string['mi_perfil']="Mi perfil";
 $string['buscar']="Buscar proyectos";
 $string['titulo']="Feria de Proyectos";
-$string['pagelayout']="En curso...";
+
 
 //FormularioProyecto
 $string['nombre_proyecto']="Nombre proyecto";

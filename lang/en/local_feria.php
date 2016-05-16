@@ -30,7 +30,6 @@ $string['explorar']="Explore";
 $string['mi_perfil']="My Profile";
 $string['buscar']="Search Projects...";
 $string['titulo']="Projects fair";
-$string['pagelayout']="Incourse";
 
 //FormularioProyecto
 $string['nombre_proyecto']="Project's name";
@@ -56,9 +55,11 @@ $string['enviar']="Send";
 $string['subido_bien']="It has been uploaded successfully";
 
 //FeriaLocalLib
-$string['archivo_mayor_200']="The file is larger than 200KB , you must reduce it before uploading";
+$string['archivo_mayor_200']="The file is larger than 200KB , 
+		you must reduce it before uploading";
 $string['formato_imagen']="Your file must be JPG or GIF. Other files are not allowed";
 $string['error_subir_archivo']="Error uploading file";
-$string['archivo_mayor_500']="The file is larger than 500KB , you must reduce it before uploading";
+$string['archivo_mayor_500']="The file is larger than 500KB ,
+		you must reduce it before uploading";
 
 
