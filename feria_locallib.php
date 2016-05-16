@@ -21,11 +21,11 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
-function subirFoto($nombre,$tamaño,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
+function subirFoto($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
 {
 $archivo = "true";
-$archivo_tamaño = $tamaño;
-if ($tamaño > 200000) {
+$archivo_tamano = $tamano;
+if ($tamano > 200000) {
 	$msj = "El archivo es mayor que 200KB, debes reducirlo antes de subirlo <BR>";
 	$archivo = "false";
 }
@@ -54,11 +54,11 @@ return $url;
 }
 
 
-function subirArchivo($nombre,$tamaño,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
+function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
 {
 	$archivo = "true";
-	$archivo_tamaño = $tamaño;
-	if ($tamaño > 500000) {
+	$archivo_tamano = $tamano;
+	if ($tamano > 500000) {
 		$msj = "El archivo es mayor que 500KB, debes reducirlo antes de subirlo <BR>";
 		$archivo = "false";
 	}
