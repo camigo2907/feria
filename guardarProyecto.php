@@ -34,7 +34,7 @@ require_login();
 
 // Page navigation and URL settin;
 $PAGE->set_url(new moodle_url('/local/feria/guardarProyecto.php'));
-$PAGE->set_pagelayout('incourse');
+$PAGE->set_pagelayout(get_string("incourse","local_feria"));
 $PAGE->set_title(get_string("titulo","local_feria"));
 
 // Show the page header

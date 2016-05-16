@@ -30,6 +30,7 @@ $string['explorar']="Explore";
 $string['mi_perfil']="My Profile";
 $string['buscar']="Search Projects...";
 $string['titulo']="Projects fair";
+$string['pagelayout']="Incourse";
 
 //FormularioProyecto
 $string['nombre_proyecto']="Project's name";
