@@ -60,3 +60,8 @@ $string['fomrato_imagen']="Tu archivo tiene que ser PDF. Otros archivos no son p
 $string['error_subir_archivo']="Error al subir el archivo";
 $string['archivo_mayor_500']="El archivo es mayor que 500KB, debes reducirlo antes de subirlo";
 
+//Explorar
+$string['nombre']= "Nombre del proyecto";
+$string['ver']= "Ver m&aacutes";
+$string['realizado']= "Realizado  por";
+$string['cat_pert']= "Categoía  del proyecto:";

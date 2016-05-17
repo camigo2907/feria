@@ -62,4 +62,9 @@ $string['error_subir_archivo']="Error uploading file";
 $string['archivo_mayor_500']="The file is larger than 500KB ,
 		you must reduce it before uploading";
 
+//Explorar
+$string['nombre']= "Project's name";
+$string['ver']= "See more";
+$string['realizado']= "Made by";
+$string['cat_pert']= "Project's category:";
 

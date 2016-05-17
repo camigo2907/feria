@@ -36,8 +36,6 @@ $PAGE->set_pagelayout("incourse");
 $PAGE->set_title(get_string("titulo","local_feria"));
 
 //
-$urlFormularioProyecto= new moodle_url("/local/feria/FormularioProyecto.php");
-
 echo'<form action="guardarproyecto.php" method="post" >
 		<table align="center">
 		<tr>

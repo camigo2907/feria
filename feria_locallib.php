@@ -58,8 +58,8 @@ function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfil
 {
 	$archivo = "true";
 	$archivo_tamano = $tamano;
-	if ($tamano > 500000) {
-		$msj = "El archivo es mayor que 500KB, debes reducirlo antes de subirlo <BR>";
+	if ($tamano > 1000000) {
+		$msj = "El archivo es mayor que 1000KB, debes reducirlo antes de subirlo <BR>";
 		$archivo = "false";
 	}
 

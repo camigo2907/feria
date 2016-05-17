@@ -43,7 +43,7 @@ echo $OUTPUT->header();
 
 // El siguiente if, sirve para saber si es que se han rellenado las casillas obligatorias..
 // si es que se rellenaron se prosigue a guardar los datos en la tabla proyectos
-if (isset ( $_REQUEST ['nombre'], $_REQUEST ['categoria'], $_REQUEST ['descripcion'] ) && $_FILES ['foto1'] ['size'] > 0 && $_FILES ['archivo'] ['size'] > 0) {
+if (isset ( $_REQUEST ['nombre'], $_REQUEST ['categoria'], $_REQUEST ['descripcion'] ) && $_FILES ['archivo'] ['type']=="application/pdf" && $_FILES ['foto1'] ['size'] > 0 && $_FILES ['foto1'] ['size'] < 200000  && $_FILES ['archivo'] ['size'] > 0 && $_FILES ['foto1'] ['size'] > 0 && $_FILES ['foto1'] ['size'] < 200000  && $_FILES ['archivo'] ['size'] < 1000000) {
 	
 
 	// var_dump ( $_FILES );
