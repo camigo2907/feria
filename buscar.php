@@ -55,7 +55,7 @@ echo $OUTPUT->header();
 // Here goes the content
 $busqueda=$_REQUEST['buscar'];
 
-echo get_string("busqueda","local_feria"). $busqueda;
+echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 			$sql1 = 'SELECT p.id, p.nombre, p.categoria, p.urlfoto1, p.urlfoto2, p.urlfoto3, p.urlfoto4, p.descripcion,  u.firstname, u.lastname
 				FROM mdl_proyecto p 
 				JOIN mdl_user u 

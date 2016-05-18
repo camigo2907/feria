@@ -78,4 +78,4 @@ $string['realizado']= "Made by";
 $string['cat_pert']= "Project's category:";
 
 //buscar 
-$string('busqueda')="Search results:";
+$string['busqueda']="Search results:";
