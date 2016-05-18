@@ -22,7 +22,6 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-
 //index
 $string['inicio']="Home";
 $string['subir_proyecto']="Upload Project";
@@ -52,15 +51,25 @@ $string['campos_obligatorios']="Required fields";
 $string['enviar']="Send"; 
 
 //GuardarProyecto
-$string['subido_bien']="It has been uploaded successfully";
+$string['subido_bien']="It has been uploaded successfully"; 
+$string['req_nom']="You must fill out the name"; 
+$string['req_des']="You must fill out the description";
+$string['tipo_arc']="Don't forget to upload the file in pdf format"; 
+$string['no_f1']="You must upload a picture"; 
+$string['no_arc']="You must upload a file"; 
+$string['gran_f1']="The first picture is larger than 200KB , you must reduce its file size before uploading"; 
+$string['gran_arch']="The file is larger than 500KB , you must reduce its file size before uploading";
+$string['gran_f2']="The second picture is larger than 200KB , you must reduce its file size before uploading";
+$string['gran_f3']="The third picture is larger than 200KB , you must reduce its file size before uploading";
+$string['gran_f4']="The fourth picture is larger than 200KB , you must reduce its file size before uploading"; 
 
-//FeriaLocalLib
-$string['archivo_mayor_200']="The file is larger than 200KB , 
-		you must reduce it before uploading";
-$string['formato_imagen']="Your file must be JPG or GIF. Other files are not allowed";
+
+//FeriaLocalLib 
+$string['archivo_mayor_200']="The file is larger than 3000KB , you must reduce its file size before uploading";
+$string['formato_imagen']="Your file must be in JPG or GIF format. Other files are not allowed";
 $string['error_subir_archivo']="Error uploading file";
-$string['archivo_mayor_500']="The file is larger than 500KB ,
-		you must reduce it before uploading";
+$string['archivo_mayor_500']="The file is larger than 500KB , you must reduce its file size before uploading";
+
 
 //Explorar
 $string['nombre']= "Project's name";
@@ -68,3 +77,5 @@ $string['ver']= "See more";
 $string['realizado']= "Made by";
 $string['cat_pert']= "Project's category:";
 
+//buscar 
+$string('busqueda')="Search results:";

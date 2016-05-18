@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
  *
- * @package local
- * @subpackage feria
- * @copyright 2016 Catalina Amigo Martinez <camigomartinez@gmail.com>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+* @package local
+* @subpackage feria
+* @copyright 2016 Catalina Amigo Martinez <camigomartinez@gmail.com>
+* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+*/
 // Minimum for Moodle to work, the basic libraries
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 include('Style.css');
@@ -53,8 +53,38 @@ echo '';
 // Show the page header
 echo $OUTPUT->header();
 // Here goes the content
+$busqueda=$_REQUEST['buscar'];
+
+echo get_string("busqueda","local_feria"). $busqueda;
+			$sql1 = 'SELECT p.id, p.nombre, p.categoria, p.urlfoto1, p.urlfoto2, p.urlfoto3, p.urlfoto4, p.descripcion,  u.firstname, u.lastname
+				FROM mdl_proyecto p 
+				JOIN mdl_user u 
+				ON p.userid = u.id 
+				LIKE p.id ="%' . $busqueda . '%"';
+			
+			$consulta2 = $DB->get_records_sql ( $sql1 );
+			// se recorre la consulta 2 con un foreach
+			foreach ( $consulta2 as $llave2 => $dato2 ) {
+				foreach ( $dato2 as $llave3 => $dato3 ) {
+					// se crea un arreglo con los datos obtenidos de cada proyecto
+				    $PPC [$llave2] [$llave3] ['1'] = $llave3;
+					$PPC [$llave2] [$llave3] ['2'] = $dato3;
+				}
+				// print_r( $PPC[$llave2] );
+				// se muestran los datos obtenidos ordenados en una tabla
+				echo "<table>";
+				echo '<tr>
+		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '" height="200"></td>';
+				echo '<td><h2>' . $PPC [$llave2] ['nombre'] ['2'] . '</h2>
+			          <br> ' . get_string ( "realizado", "local_feria" ) . ' ' . $PPC [$llave2] ['firstname'] ['2'] . ' ' . $PPC [$llave2] ['lastname'] ['2'] . '
+			          <br>  ' . get_string ( "cat_pert", "local_feria" ) . '' . get_string ( $PPC [$llave2] ['categoria'] ['2'], "local_feria" ) . ' 
+			          <br><a href= "moodle/local/feria/proyecto.php?id=' . $PPC [$llave2] ['id'] ['2'] . '">' . get_string ( 'ver', 'local_feria' ) . '</a>
+				 	  </td>
+	                  </tr>';
+				echo '</table>';
+				echo '<hr>';
+			
+			}
 
 // Show the page footer
 echo $OUTPUT->footer();
-
-

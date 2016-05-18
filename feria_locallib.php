@@ -21,6 +21,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
+
+
 function subirFoto($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
 {
 $archivo = "true";
@@ -58,7 +60,7 @@ function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfil
 {
 	$archivo = "true";
 	$archivo_tamano = $tamano;
-	if ($tamano > 1000000) {
+	if ($tamano > 3000000) {
 		$msj = "El archivo es mayor que 1000KB, debes reducirlo antes de subirlo <BR>";
 		$archivo = "false";
 	}
