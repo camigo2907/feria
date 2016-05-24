@@ -25,6 +25,7 @@
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
 Global $DB;
+
 $styleexplorar = "background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: -moz-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: -ms-linear-gradient(top, #ffffff, #f0f0f0);

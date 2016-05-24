@@ -22,6 +22,7 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+
 //index
 $string['inicio']="Inicio";
 $string['subir_proyecto']="Subir proyecto";

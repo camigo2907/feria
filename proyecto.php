@@ -24,6 +24,7 @@
 // librerías necesarias para que trabaje moodle
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
+
 include '/feria_locallib.php';
 Global $DB;
 $styleexplorar = "background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);

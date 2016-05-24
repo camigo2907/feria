@@ -147,6 +147,7 @@ if (isset ( $_REQUEST ['nombre'])
 		$urlfoto4 = subirFoto ( $nombre4, $tamano4, $tempNombre4, $tipo4 );
 		$foto4 = $CFG->wwwroot . '/local/feria/' . $urlfoto4;
 		$proyecto->urlfoto4 = $foto4;
+		
 	}
 	else {
 		$proyecto->urlfoto4 = NULL;

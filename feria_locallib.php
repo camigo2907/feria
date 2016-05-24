@@ -25,6 +25,7 @@
 
 function subirFoto($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfile']['size'],$_FILES ['uploadedfile'] ['name'],$_FILES ['uploadedfile'] ['tmp_name'])
 {
+	
 $archivo = "true";
 $archivo_tamano = $tamano;
 if ($tamano > 600000) {
