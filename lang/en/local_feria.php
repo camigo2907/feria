@@ -57,11 +57,11 @@ $string['req_des']="You must fill out the description";
 $string['tipo_arc']="Don't forget to upload the file in pdf format"; 
 $string['no_f1']="You must upload a picture"; 
 $string['no_arc']="You must upload a file"; 
-$string['gran_f1']="The first picture is larger than 200KB , you must reduce its file size before uploading"; 
+$string['gran_f1']="The first picture is larger than 600KB , you must reduce its file size before uploading"; 
 $string['gran_arch']="The file is larger than 500KB , you must reduce its file size before uploading";
-$string['gran_f2']="The second picture is larger than 200KB , you must reduce its file size before uploading";
-$string['gran_f3']="The third picture is larger than 200KB , you must reduce its file size before uploading";
-$string['gran_f4']="The fourth picture is larger than 200KB , you must reduce its file size before uploading"; 
+$string['gran_f2']="The second picture is larger than 600KB , you must reduce its file size before uploading";
+$string['gran_f3']="The third picture is larger than 600KB , you must reduce its file size before uploading";
+$string['gran_f4']="The fourth picture is larger than 600KB , you must reduce its file size before uploading"; 
 
 
 //FeriaLocalLib 

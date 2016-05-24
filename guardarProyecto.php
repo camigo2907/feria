@@ -65,46 +65,46 @@ if (isset ( $_REQUEST ['nombre'])
 		&&($_FILES ['foto1'] ['type'] == "image/jpeg" || $_FILES ['foto1'] ['type'] == "image/gif")
 		&& $_FILES ['archivo'] ['type']=="application/pdf" 
 		&& $_FILES ['foto1'] ['size'] > 0 
-		&& $_FILES ['foto1'] ['size'] < 200000 
+		&& $_FILES ['foto1'] ['size'] < 600000 
 		&& $_FILES ['archivo'] ['size'] > 0
 		&& $_FILES ['archivo'] ['size'] < 3000000
 		&& $_FILES ['foto1'] ['size'] > 0
-		&& $_FILES ['foto2'] ['size'] < 200000 
-		&& $_FILES ['foto3'] ['size'] < 200000
-		&& $_FILES ['foto4'] ['size'] < 200000) {
+		&& $_FILES ['foto2'] ['size'] < 600000 
+		&& $_FILES ['foto3'] ['size'] < 600000
+		&& $_FILES ['foto4'] ['size'] < 600000) {
 	
 	 //var_dump ( $_FILES );
 	 //var_dump ( $_REQUEST );
 	// Datos obtenidos de la foto 1
 	$nombre1 = $_FILES ['foto1'] ['name'];
+	echo cambioNombreArchivo($nombre1);
 	$tempNombre1 = $_FILES ['foto1'] ['tmp_name'];
 	$tamano1 = $_FILES ['foto1'] ['size'];
 	$tipo1 = $_FILES ['foto1'] ['type'];
 
 	// Datos obtenidos de la foto 2
-	$nombre2 = $_FILES ['foto2'] ['name'];
+	$nombre2 = cambioNombreArchivo($_FILES ['foto2'] ['name'],false);
 	$tempNombre2 = $_FILES ['foto2'] ['tmp_name'];
 	$tamano2 = $_FILES ['foto2'] ['size'];
 	$tipo2 = $_FILES ['foto2'] ['type'];
 
 	// Datos obtenidos de la foto 3
-	$nombre3 = $_FILES ['foto3'] ['name'];
+	$nombre3 = cambioNombreArchivo($_FILES ['foto3'] ['name'],false);
 	$tempNombre3 = $_FILES ['foto3'] ['tmp_name'];
 	$tamano3 = $_FILES ['foto3'] ['size'];
 	$tipo3 = $_FILES ['foto3'] ['type'];
 
 	// Datos obtenidos de la foto 4
-	$nombre4 = $_FILES ['foto4'] ['name'];
+	$nombre4 = cambioNombreArchivo($_FILES ['foto4'] ['name'],false);
 	$tempNombre4 = $_FILES ['foto4'] ['tmp_name'];
 	$tamano4 = $_FILES ['foto4'] ['size'];
 	$tipo4 = $_FILES ['foto4'] ['type'];
 
 	// Datos obtenidos del archivo pdf
-	$nombre5 = $_FILES ['archivo'] ['name'];
+	$nombre5 = cambioNombreArchivo($_FILES ['archivo'] ['name'],false);
 	$tempNombre5 = $_FILES ['archivo'] ['tmp_name'];
 	$tamano5 = $_FILES ['archivo'] ['size'];
 	$tipo5 = $_FILES ['archivo'] ['type'];
-	
 	
 	// Se guardan las fotos, en la carpeta fotos, a traves de la función subirFoto creada en
 	// locallib.php
@@ -114,9 +114,10 @@ if (isset ( $_REQUEST ['nombre'])
 
 	// idea para cambiar la cosa del null es poner las $proyecto->urlfoto dentro del if
 	// Insertamos en la BBDD
-
-	$proyecto->descripcion = $_REQUEST ['descripcion'];
+	$descripcion=$_REQUEST['descripcion'];
+	echo cambioDescripcion($descripcion);
 	$proyecto = new stdClass ();
+	$proyecto->descripcion = cambioDescripcion($_REQUEST ['descripcion']);
 	$proyecto->nombre = $_REQUEST ['nombre'];
 	$proyecto->categoria = $_REQUEST ['categoria'];
 	$proyecto->urlarchivo = $CFG->wwwroot . '/local/feria/' . $urlarchivo;
@@ -170,17 +171,17 @@ else {
 	    {$msj[]="tipo_arc";}
 	if( $_FILES ['foto1'] ['size'] <= 0)
 		{ $msj[]="no_f1";}
-	if ($_FILES ['foto1'] ['size'] > 200000)
+	if ($_FILES ['foto1'] ['size'] > 600000)
 	    {$msj[]="gran_f1";}
 	if ($_FILES ['archivo'] ['size'] <= 0)
 		{ $msj[]="no_arc";}
 	if($_FILES ['archivo'] ['size'] > 3000000)
 		{$msj[]="gran_arch";}
-	if( $_FILES ['foto2'] ['size']> 200000)
+	if( $_FILES ['foto2'] ['size']> 600000)
 		{$msj[]="gran_f2";}
-	if( $_FILES ['foto3'] ['size'] > 200000)
+	if( $_FILES ['foto3'] ['size'] > 600000)
 		{$msj[]="gran_f3";}
-	if( $_FILES ['foto4'] ['size'] > 200000)
+	if( $_FILES ['foto4'] ['size'] > 600000)
 		{$msj[]="gran_f4";}
 		//print_r($msj);
 		// Si es que no se rellenaron todas las casillas necesarias, se redirecciona al formulario

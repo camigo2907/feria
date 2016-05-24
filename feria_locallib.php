@@ -27,7 +27,7 @@ function subirFoto($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfile']
 {
 $archivo = "true";
 $archivo_tamano = $tamano;
-if ($tamano > 200000) {
+if ($tamano > 600000) {
 	$msj = "El archivo es mayor que 200KB, debes reducirlo antes de subirlo <BR>";
 	$archivo = "false";
 }
@@ -86,5 +86,79 @@ function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfil
 	else
 	{ $url=$msj; }
 	return $url;
+}
+function cambioNombreArchivo($nombreArchivo, $slash = false) {
+    $cambiar = array(
+        ' ',
+        'á',
+        'é',
+        'í',
+        'ó',
+        'ú',
+        'ñ',
+        'Ñ',
+        'Á',
+        'É',
+        'Í',
+        'Ó',
+        'Ú',
+        '(',
+        ')',
+        ',');
+    $cambiarpor = array(
+        '-',
+        'a',
+        'e',
+        'i',
+        'o',
+        'u',
+        'n',
+        'N',
+        'A',
+        'E',
+        'I',
+        'O',
+        'U',
+        '-',
+        '-',
+        '-');
+    if ($slash) {
+        $cambiar [] = '/';
+        $cambiarpor [] = '-';
+    }
+    $nuevoNombre = str_replace($cambiar, $cambiarpor, $nombreArchivo);
+    return $nuevoNombre;
+}
+
+
+function cambioDescripcion($descripcion) {
+	$cambiar = array(
+			'á',
+			'é',
+			'í',
+			'ó',
+			'ú',
+			'ñ',
+			'Ñ',
+			'ACONTILDE',
+			'É',
+			'Í',
+			'Ó',
+			'Ú');
+	$cambiarpor = array(
+			'&aacute',
+			'&eacute',
+			'&iacute',
+			'&oacute',
+			'&uacute',
+			'&ntilde',
+			'&Ntilde',
+			'&Aacute',
+			'&Eacute',
+			'&Iacute',
+			'&Oacute',
+			'&Uacute');
+	$nuevoNombre = str_replace($cambiar, $cambiarpor, $descripcion);
+	return $nuevoNombre;
 }
 ?>

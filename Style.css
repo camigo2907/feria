@@ -72,4 +72,57 @@
   background-image: linear-gradient(to bottom, #ffffff, #f0f0f0);
   text-decoration: none;
 }
+.slides{
+	width:40%;
+}
+.slides img{
+	width:40%;
+}
+.slidesjs-pagination{
+	background:#e0e2e5;
+	list-style:none;
+	overflow:hidden;
+	}
+.slidesjs-pagination li {
+	float: left;
+}
+.slidesjs-pagination li a {
+	display:block;
+	padding: 10px 20px;
+	color:#424242;
+	text-decoration:none;
+}
+.slides .active {
+	background:#fff;
+}
+.slidesjs-navigation{
+	background:#fff;
+	color:#424242;
+	text-decoration:none;
+	display:inline-block;
+	padding:10px 20px;
+	float: right;
+}
+#div {
+width:100%;
+
+}
+#div1 {float:left;
+width:40%;
+
+}
+
+#div2 {float:right;
+width:60%;
+
+}
+
+
+
+.imagensola{
+	 width: 376;
+      height: 211;
+}
+    
+
 </style>

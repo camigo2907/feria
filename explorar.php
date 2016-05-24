@@ -111,7 +111,8 @@ foreach ( $consulta1 as $llave => $dato ) {
 				// print_r( $PPC[$llave2] );
 				// se muestran los datos obtenidos ordenados en una tabla
 
-				$urlvermas=new moodle_url ( 'local/feria/proyecto.php?id=' . $PPC [$llave2] ['id'] ['2']);
+				$urlvermas= new moodle_url ( '/local/feria/proyecto.php?id='. $PPC [$llave2] ['id'] ['2'].'' );
+				
 				echo "<table>";
 				echo '<tr>
 		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '" height="200"></td>';
