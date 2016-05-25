@@ -167,8 +167,8 @@ foreach ( $consulta as $llave => $dato ) {
 	//print_r($comentario);
 	echo '<div id="div2"><table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
 	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
-		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>';
-	//echo '<tr><td> </td><a href="descargar.php?archivo='.$proyecto [$llave] ['urlarchivo'] ['2'].'" >Descargar imagen</a></tr>';
+		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>
+		  	<tr><td> <a href="" >Descargar archivo</a></td></tr>';
 	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="Me Gusta" name="1"> </td></tr>';
 	echo '<tr><td><textarea name="comentario" rows="4" cols="65">Comente... </textarea></td> </tr>';
 	echo '<tr><td align="right"><input type="submit" name="0" value="Comentar"></td></tr>';
@@ -204,6 +204,7 @@ if($_REQUEST ['0']=='Comentar')
 	$retroalimentacion-> comentario=$_REQUEST['comentario'];
 	$DB->insert_record ( 'retroalimentacion', $retroalimentacion );
 }
+
 
 
 // Finalmente se muestran los datos del footer

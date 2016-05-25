@@ -58,7 +58,7 @@
   background: #ffffff;
   height:60px;
   line-height:60px;
-  width: 1000px;
+  width: 900px;
   padding: 10px 20px 10px 20px;
   border: solid #9ea3a6 1px;
   text-decoration: none;
@@ -89,7 +89,7 @@
 }
 .slidesjs-pagination li a {
 	display:block;
-	padding: 10px 20px;
+	padding: 5px 10px;
 	color:#424242;
 	text-decoration:none;
 }
@@ -101,7 +101,7 @@
 	color:#424242;
 	text-decoration:none;
 	display:inline-block;
-	padding:10px 20px;
+	padding:5px 10px;
 	float: right;
 }
 #div {
@@ -126,7 +126,7 @@ width:60%;
 }
 .fotoexplorar{
 		 width: 376px;
-      height: 211px;
+      
 	}
 .fotoexplorar img{
 		 width: 100%;

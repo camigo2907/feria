@@ -89,23 +89,19 @@ function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfil
 	return $url;
 }
 function cambioNombreArchivo($nombreArchivo, $slash = false) {
-    $cambiar = array(
-        ' ',
-        'á',
-        'é',
-        'í',
-        'ó',
-        'ú',
-        'ñ',
-        'Ñ',
-        'Á',
-        'É',
-        'Í',
-        'Ó',
-        'Ú',
-        '(',
-        ')',
-        ',');
+ $cambiar = array(
+			'á',
+			'é',
+			'í',
+			'ó',
+			'ú',
+			'ñ',
+			'Ñ',
+			'Á',
+			'É',
+			'Í',
+			'Ó',
+			'Ú');
     $cambiarpor = array(
         '-',
         'a',
@@ -134,18 +130,22 @@ function cambioNombreArchivo($nombreArchivo, $slash = false) {
 
 function cambioDescripcion($descripcion) {
 	$cambiar = array(
-			'á',
-			'é',
-			'í',
-			'ó',
-			'ú',
-			'ñ',
-			'Ñ',
-			'ACONTILDE',
-			'É',
-			'Í',
-			'Ó',
-			'Ú');
+			' ',
+			'&aacute',
+			'&eacute',
+			'&iacute',
+			'&oacute',
+			'&uacute',
+			'&ntilde',
+			'&Ntilde',
+			'&Aacute',
+			'&Eacute',
+			'&Iacute',
+			'&Oacute',
+			'&Uacute',
+			'(',
+			')',
+			',');
 	$cambiarpor = array(
 			'&aacute',
 			'&eacute',

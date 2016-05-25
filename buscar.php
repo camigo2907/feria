@@ -61,7 +61,7 @@ echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 				FROM mdl_proyecto p 
 				JOIN mdl_user u 
 				ON p.userid = u.id 
-				LIKE p.id ="%' . $busqueda . '%"';
+				WHERE p.nombre LIKE "%' . $busqueda . '%"';
 			
 			$consulta2 = $DB->get_records_sql ( $sql1 );
 			// se recorre la consulta 2 con un foreach
