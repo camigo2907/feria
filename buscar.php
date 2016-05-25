@@ -79,7 +79,7 @@ echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 				echo '<td><h2>' . $PPC [$llave2] ['nombre'] ['2'] . '</h2>
 			          <br> ' . get_string ( "realizado", "local_feria" ) . ' ' . $PPC [$llave2] ['firstname'] ['2'] . ' ' . $PPC [$llave2] ['lastname'] ['2'] . '
 			          <br>  ' . get_string ( "cat_pert", "local_feria" ) . '' . get_string ( $PPC [$llave2] ['categoria'] ['2'], "local_feria" ) . ' 
-			          <br><a href= "moodle/local/feria/proyecto.php?id=' . $PPC [$llave2] ['id'] ['2'] . '">' . get_string ( 'ver', 'local_feria' ) . '</a>
+			           <br><a href= "' . $urlvermas . '">' . get_string ( 'ver', 'local_feria' ) . '</a>
 				 	  </td>
 	                  </tr>';
 				echo '</table>';
