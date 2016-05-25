@@ -116,8 +116,8 @@ foreach ( $consulta1 as $llave => $dato ) {
 				
 				echo "<table>";
 				echo '<tr>
-		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '" height="200"></td>';
-				echo '<td><h2>' . $PPC [$llave2] ['nombre'] ['2'] . '</h2>
+		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '"  class="fotoexplorar"><</td>';
+				echo '<td align="center"><h2>' . $PPC [$llave2] ['nombre'] ['2'] . '</h2>
 			          <br> ' . get_string ( "realizado", "local_feria" ) . ' ' . $PPC [$llave2] ['firstname'] ['2'] . ' ' . $PPC [$llave2] ['lastname'] ['2'] . '
 			          <br>  ' . get_string ( "cat_pert", "local_feria" ) . '' . get_string ( $PPC [$llave2] ['categoria'] ['2'], "local_feria" ) . ' 
 			          <br><a href= "' . $urlvermas . '">' . get_string ( 'ver', 'local_feria' ) . '</a>

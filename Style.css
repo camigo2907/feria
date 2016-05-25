@@ -121,9 +121,16 @@ width:60%;
 
 
 .imagensola{
-	 width: 376;
-      height: 211;
+	 width: 376px;
+      height: 211px;
 }
-    
+.fotoexplorar{
+		 width: 376px;
+      height: 211px;
+	}
+.fotoexplorar img{
+		 width: 100%;
+      
+	}
 
 </style>

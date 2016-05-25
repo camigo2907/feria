@@ -138,13 +138,25 @@ foreach ( $consulta as $llave => $dato ) {
 	{
 		$cantidadMG=0;
 	}
-	$sql2= 'SELECT r.comentario, u.firstname, u.lastname
+	if(isset($_REQUEST ['1']))
+	{
+		$cantidadMG=$cantidadMG+1;
+	}
+	
+	$sql2= 'SELECT r.id, r.comentario, u.firstname, u.lastname
 				FROM mdl_user u
 				JOIN mdl_retroalimentacion r
 		        ON u.id = r.userid
-			   WHERE r.proyectoid ="'.$idProyecto.'" AND r.tipo=0';
+			   WHERE r.proyectoid ="'.$idProyecto.'" AND r.tipo=0
+			   	ORDER BY r.id DESC';
 	$consulta2 = $DB->get_records_sql ( $sql2 );
 	$l=0;
+	if($_REQUEST ['0']=='Comentar')
+	{
+		$comentario[$l]['firstname']= $USER->firstname;
+		$comentario[$l]['lastname']= $USER->lastname;
+		$comentario[$l]['comentario']=$_REQUEST['comentario'];
+	}
 	foreach ( $consulta2 as $llave4 => $dato4 ) {
 		$l++;
 		foreach ( $dato4 as $llave5 => $dato5 ) {
@@ -156,13 +168,15 @@ foreach ( $consulta as $llave => $dato ) {
 	echo '<div id="div2"><table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
 	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
 		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>';
+	//echo '<tr><td> </td><a href="descargar.php?archivo='.$proyecto [$llave] ['urlarchivo'] ['2'].'" >Descargar imagen</a></tr>';
 	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="Me Gusta" name="1"> </td></tr>';
 	echo '<tr><td><textarea name="comentario" rows="4" cols="65">Comente... </textarea></td> </tr>';
 	echo '<tr><td align="right"><input type="submit" name="0" value="Comentar"></td></tr>';
 	echo '</form></table>';
 	echo '</div>';
-	echo"hola<br><br><br><br><table>";
-	for($l=1;$l<=count($l)+1;$l++){
+	echo'PREGUNTA POR ESTO <br><br><br><br><table>';
+
+	for($l=0;$l<count($comentario)+1;$l++){
 	echo'<tr><td>'.$comentario[$l]["firstname"].' '.$comentario[$l]["lastname"].'  </td><td>'.$comentario[$l]["comentario"].'</td></tr>';
 	}
 	echo"</table>";
