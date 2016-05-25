@@ -78,7 +78,11 @@ echo $OUTPUT->header ();
 
 $sql1 = 'SELECT categoria FROM mdl_proyecto GROUP BY categoria';
 $consulta1 = $DB->get_records_sql ( $sql1 );
-
+if (empty($consulta1))
+{
+	echo get_string("no_existen","local_feria");
+}
+else {
 // Se abre un form para que el usuario pueda elegir la categoria de los proyectos que quiere ver
 
 echo '<form action="explorar.php" method="post">';
@@ -130,6 +134,6 @@ foreach ( $consulta1 as $llave => $dato ) {
 	}
 }
 echo '</form>';
-
+}
 // Finalmente se muestran los datos del footer
 echo $OUTPUT->footer ();

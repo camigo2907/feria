@@ -56,7 +56,6 @@ echo $OUTPUT->header();
 // Here goes the content
 $busqueda=$_REQUEST['buscar'];
 
-echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 			$sql1 = 'SELECT p.id, p.nombre, p.categoria, p.urlfoto1, p.urlfoto2, p.urlfoto3, p.urlfoto4, p.descripcion,  u.firstname, u.lastname
 				FROM mdl_proyecto p 
 				JOIN mdl_user u 
@@ -64,15 +63,26 @@ echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 				WHERE p.nombre LIKE "%' . $busqueda . '%"';
 			
 			$consulta2 = $DB->get_records_sql ( $sql1 );
-			// se recorre la consulta 2 con un foreach
+			if (empty($consulta2))
+			{
+				echo get_string("no_encontrado","local_feria");
+			}
+			else {
+
+				echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
+				// se recorre la consulta 2 con un foreach
 			foreach ( $consulta2 as $llave2 => $dato2 ) {
+
 				foreach ( $dato2 as $llave3 => $dato3 ) {
 					// se crea un arreglo con los datos obtenidos de cada proyecto
 				    $PPC [$llave2] [$llave3] ['1'] = $llave3;
 					$PPC [$llave2] [$llave3] ['2'] = $dato3;
 				}
+				$urlvermas= new moodle_url ( '/local/feria/proyecto.php?id='. $PPC [$llave2] ['id'] ['2'].'' );
+				
 				// print_r( $PPC[$llave2] );
 				// se muestran los datos obtenidos ordenados en una tabla
+			
 				echo "<table>";
 				echo '<tr>
 		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '" height="200"></td>';
@@ -84,8 +94,8 @@ echo "<h1>". get_string("busqueda","local_feria")." ". $busqueda."</h1>";
 	                  </tr>';
 				echo '</table>';
 				echo '<hr>';
-			
-			}
+	
+			}}
 
 // Show the page footer
 echo $OUTPUT->footer();

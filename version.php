@@ -23,7 +23,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2016052502; //YYYYMMDD
+$plugin->version   = 2016052505; //YYYYMMDD
 $plugin->requires  = 2015111603;
 //$plugin->cron      = 0;
 $plugin->component = 'local_feria';

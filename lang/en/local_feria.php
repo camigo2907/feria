@@ -81,3 +81,5 @@ $string['cat_pert']= "Project's category:";
 
 //buscar 
 $string['busqueda']="Search results:";
+$string["no_encontrado"]="Your search returned no results";
+$string["no_existen"]="There is no project in our database";
