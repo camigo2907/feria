@@ -83,6 +83,7 @@ if (empty($consulta1))
 	echo get_string("no_existen","local_feria");
 }
 else {
+	
 // Se abre un form para que el usuario pueda elegir la categoria de los proyectos que quiere ver
 
 echo '<form action="explorar.php" method="post">';

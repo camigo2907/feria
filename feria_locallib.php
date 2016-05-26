@@ -90,18 +90,22 @@ function subirArchivo($nombre,$tamano,$tempNombre,$tipo)// ($_FILES['uploadedfil
 }
 function cambioNombreArchivo($nombreArchivo, $slash = false) {
  $cambiar = array(
-			'·',
-			'È',
-			'Ì',
-			'Û',
-			'˙',
-			'Ò',
-			'—',
-			'¡',
-			'…',
-			'Õ',
-			'”',
-			'⁄');
+ 		' ',
+			'√°',
+			'√©',
+			'√≠',
+			'√≥',
+			'√∫',
+			'√±',
+			'√ë',
+ 			'√Å',
+			'√â',
+			'√ç',
+			'√ì',
+			'√ö',
+ 		'(',
+			')',
+			',');
     $cambiarpor = array(
         '-',
         'a',

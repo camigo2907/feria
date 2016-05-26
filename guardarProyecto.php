@@ -209,7 +209,8 @@ else {
 <tr><td>' . get_string ( "archivo", "local_feria" ) . ':  </td><td> <input type="file" name="archivo" id=”archivo” />*</td></tr>
  <tr><td>' . get_string ( "url_video", "local_feria" ) . ':  </td><td><input type="text" name="urlvideo" /></td></tr>
  <tr><td></td><td><p><input name=enviardatos type="submit" value="' . get_string ( "enviar", "local_feria" ) . '" /></p></td><td></td></tr>
-<tr><td></td><td> * ' . get_string ( "campos_obligatorios", "local_feria" ) . '</td></tr>';
+<tr><td></td><td> * ' . get_string ( "campos_obligatorios", "local_feria" ) . '</td></tr>
+<tr><td></td><td> * ' . get_string ( "requerimientos", "local_feria" ) . '</td></tr>';
 
 	for ($i = 0; $i <= count($msj)-1; $i++) {
 		echo '<tr><td></td><td><font color="red" ><b>'. get_string($msj[$i],"local_feria").'</b></font></td></tr>';

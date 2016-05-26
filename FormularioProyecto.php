@@ -76,6 +76,7 @@ echo '<form action="guardarProyecto.php" method="post" enctype="multipart/form-d
 <tr><td>' . get_string ( "archivo", "local_feria" ) . ':  </td><td> <input type="file" name="archivo" id=”archivo” />*</td></tr>
  <tr><td>' . get_string ( "url_video", "local_feria" ) . ':  </td><td><input type="text" name="urlvideo" /></td></tr>
  <tr><td></td><td><p><input name=enviardatos type="submit" value="' . get_string ( "enviar", "local_feria" ) . '" /></p></td><td></td></tr>
-<tr><td></td><td> * ' . get_string ( "campos_obligatorios", "local_feria" ) . '</td></tr></table></form> ';
+<tr><td></td><td> * ' . get_string ( "campos_obligatorios", "local_feria" ) . '</td></tr></table>
+		<tr><td></td><td> * ' . get_string ( "requerimientos", "local_feria" ) . '</td></tr></table></form> ';
 // Show the page footer
 echo $OUTPUT->footer ();

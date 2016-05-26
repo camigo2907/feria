@@ -64,7 +64,10 @@ $string['gran_arch']="The file is larger than 500KB , you must reduce its file s
 $string['gran_f2']="The second picture is larger than 600KB , you must reduce its file size before uploading";
 $string['gran_f3']="The third picture is larger than 600KB , you must reduce its file size before uploading";
 $string['gran_f4']="The fourth picture is larger than 600KB , you must reduce its file size before uploading"; 
-
+$string["requerimientos"]="The maximum size for an image file is 600 kb.
+		                  <br> The maximum size for a pdf file is 3 MB.
+		                  <br> The file must be in a pdf format. 
+                          <br> The image must be in jpg or gif format";
 
 //FeriaLocalLib 
 $string['archivo_mayor_200']="The file is larger than 3000KB , you must reduce its file size before uploading";

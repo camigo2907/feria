@@ -21,7 +21,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
-// librerías necesarias para que trabaje moodle
+// librerï¿½as necesarias para que trabaje moodle
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
 
@@ -163,19 +163,20 @@ foreach ( $consulta as $llave => $dato ) {
 			$comentario[$l][$llave5]=$dato5;
 		}
 	}
-	
+	$partes = explode('/', $proyecto [$llave] ['urlarchivo'] ['2']);
+	$urlarchivo = $partes[count($partes)-1];
+	$urlarchivo = $CFG->wwwroot . '/local/feria/archivos/' . $urlarchivo;
 	//print_r($comentario);
 	echo '<div id="div2"><table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
 	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
 		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>
-		  	<tr><td> <a href="" >Descargar archivo</a></td></tr>';
+		  	<tr><td> <a href="'.$urlarchivo.'" >Descargar archivo</a></td></tr>';
 	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="Me Gusta" name="1"> </td></tr>';
 	echo '<tr><td><textarea name="comentario" rows="4" cols="65">Comente... </textarea></td> </tr>';
 	echo '<tr><td align="right"><input type="submit" name="0" value="Comentar"></td></tr>';
 	echo '</form></table>';
 	echo '</div>';
-	echo'PREGUNTA POR ESTO <br><br><br><br><table>';
-
+	echo'<table>';
 	for($l=0;$l<count($comentario)+1;$l++){
 	echo'<tr><td>'.$comentario[$l]["firstname"].' '.$comentario[$l]["lastname"].'  </td><td>'.$comentario[$l]["comentario"].'</td></tr>';
 	}
