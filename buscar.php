@@ -37,11 +37,12 @@ $PAGE->set_pagelayout("incourse");
 $PAGE->set_title(get_string("titulo","local_feria"));
 
 //
+$idusuario=$USER->id;
 echo'<form action="buscar.php" method="post" >
 		<table align="center">
 		<tr>
-		<td><td><a href="'.new moodle_url("/local/feria/index.php").'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
-		<td><td><a href="' . new moodle_url ( "/local/feria/FormularioProyecto.php" ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
+		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
+		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
 		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
@@ -50,7 +51,6 @@ echo'<form action="buscar.php" method="post" >
 		</tr>
 		</table>
 		</form>';
-echo '';
 // Show the page header
 echo $OUTPUT->header();
 // Here goes the content

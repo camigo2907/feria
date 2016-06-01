@@ -27,22 +27,6 @@ include ('Style.css');
 
 include '/feria_locallib.php';
 Global $DB;
-$styleexplorar = "background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);
-  background-image: -moz-linear-gradient(top, #ffffff, #f0f0f0);
-  background-image: -ms-linear-gradient(top, #ffffff, #f0f0f0);
-  background-image: -o-linear-gradient(top, #ffffff, #f0f0f0);
-  background-image: linear-gradient(to bottom, #ffffff, #f0f0f0);
-  -webkit-border-radius: 3;
-  -moz-border-radius: 3;
-  border-radius: 3px;
-  color: #423f42;
-  font-size: 20px;
-  background: #ffffff;
-  height:60px;
-  line-height:60px;
-  width: 1050px;
-  border: solid #e0e2e5 1px;
-  text-decoration: none;";
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance ();
 $PAGE->set_context ( $context );
@@ -56,20 +40,20 @@ $PAGE->set_pagelayout ( "incourse" );
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 
 // El siguiente "echo" despliega el menu que se ve en el header
-echo '<form action="buscar.php" method="post" >
+$idusuario=$USER->id;
+echo'<form action="buscar.php" method="post" >
 		<table align="center">
 		<tr>
-		<td><a href="' . new moodle_url ( "/local/feria/index.php" ) . '" class="classname"> ' . get_string ( "inicio", "local_feria" ) . ' </a></td>
-		<td><td><a href="' . new moodle_url ( "/local/feria/perfil.php" ) . '" class="classname"> ' . get_string ( "mi_perfil", "local_feria" ) . ' </a> </td>
-		<td><input type="text" name="buscar" value="' . get_string ( "buscar", "local_feria" ) . '" align ="center"></td>
+		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
+		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
+		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/FormularioProyecto.php" ) . '" class="classname">' . get_string ( "subir_proyecto", "local_feria" ) . '</a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/explorar.php" ) . '" class="classname">' . get_string ( "explorar", "local_feria" ) . '</a></td>
+		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
+		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
 		</tr>
 		</table>
 		</form>';
-
 echo $OUTPUT->header ();
 
 $idProyecto=$_REQUEST['id'];
@@ -170,7 +154,7 @@ foreach ( $consulta as $llave => $dato ) {
 	echo '<div id="div2"><table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
 	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
 		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>
-		  	<tr><td> <a href="'.$urlarchivo.'" >Descargar archivo</a></td></tr>';
+		  	<tr><td> <a href="'.$urlarchivo.'" >' . get_string ( "ver_pdf", "local_feria" ) . '</a></td></tr>';
 	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="Me Gusta" name="1"> </td></tr>';
 	echo '<tr><td><textarea name="comentario" rows="4" cols="65">Comente... </textarea></td> </tr>';
 	echo '<tr><td align="right"><input type="submit" name="0" value="Comentar"></td></tr>';

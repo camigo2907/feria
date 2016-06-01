@@ -21,7 +21,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
-// librerías necesarias para que trabaje moodle
+// librerï¿½as necesarias para que trabaje moodle
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
 Global $DB;
@@ -55,17 +55,17 @@ $PAGE->set_pagelayout ( "incourse" );
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 
 // El siguiente "echo" despliega el menu que se ve en el header
-
-echo '<form action="buscar.php" method="post" >
+$idusuario=$USER->id;
+echo'<form action="buscar.php" method="post" >
 		<table align="center">
 		<tr>
-		<td><a href="' . new moodle_url ( "/local/feria/index.php" ) . '" class="classname"> ' . get_string ( "inicio", "local_feria" ) . ' </a></td>
-		<td><td><a href="' . new moodle_url ( "/local/feria/perfil.php" ) . '" class="classname"> ' . get_string ( "mi_perfil", "local_feria" ) . ' </a> </td>
-		<td><input type="text" name="buscar" value="' . get_string ( "buscar", "local_feria" ) . '" align ="center"></td>
+		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
+		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
+		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/FormularioProyecto.php" ) . '" class="classname">' . get_string ( "subir_proyecto", "local_feria" ) . '</a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/explorar.php" ) . '" class="classname">' . get_string ( "explorar", "local_feria" ) . '</a></td>
+		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
+		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
 		</tr>
 		</table>
 		</form>';
@@ -94,7 +94,7 @@ echo '<form action="explorar.php" method="post">';
 foreach ( $consulta1 as $llave => $dato ) {
 	foreach ( $dato as $llave1 => $dato1 ) {
 		
-		// se crea un boton por da categoría existente...
+		// se crea un boton por da categorï¿½a existente...
 		
 		echo '<input type="submit" name="' . $dato1 . '" value="' . get_string ( $dato1, "local_feria" ) . ' " style=" ' . $styleexplorar . '"   ><hr>';
 		// Si se apreta el boton entonces se desplegara una lista con los datos

@@ -36,20 +36,20 @@ $PAGE->set_url ( new moodle_url ( '/local/feria/FormularioProyecto.php' ) );
 $PAGE->set_pagelayout("incourse");
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 
-echo '<form action="buscar.php" method="post" >
+$idusuario=$USER->id;
+echo'<form action="buscar.php" method="post" >
 		<table align="center">
 		<tr>
-		<td><td><a href="' . new moodle_url ( "/local/feria/index.php" ) . '" class="classname"> ' . get_string ( "inicio", "local_feria" ) . ' </a></td>
-		<td><td><a href="' . new moodle_url ( "/local/feria/perfil.php" ) . '" class="classname"> ' . get_string ( "mi_perfil", "local_feria" ) . ' </a> </td>
-		<td><input type="text" name="buscar" value="' . get_string ( "buscar", "local_feria" ) . '" align ="center"></td>
+		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
+		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
+		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/FormularioProyecto.php" ) . '" class="classname">' . get_string ( "subir_proyecto", "local_feria" ) . '</a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/explorar.php" ) . '" class="classname">' . get_string ( "explorar", "local_feria" ) . '</a></td>
+		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
+		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
 		</tr>
 		</table>
 		</form>';
-
 echo $OUTPUT->header ();
 
 // Formulario para subir el proyecto
@@ -70,10 +70,10 @@ echo '<form action="guardarProyecto.php" method="post" enctype="multipart/form-d
 <option value="quimica">' . get_string ( "quimica", "local_feria" ) . '</option>
 </select>*</td></tr>
  <tr><td>' . get_string ( "foto", "local_feria" ) . ':</td><td><input TYPE="file" name="foto1" id="foto1" />*</td></tr>
-<tr><td></td><td><input TYPE="file" name="foto2" id=”foto2” /></td></tr>
-<tr><td></td><td><input TYPE="file" name="foto3" id=”foto3” /></td></tr>
-<tr><td></td><td><input TYPE="file" name="foto4" id=”foto4”/></td></tr>
-<tr><td>' . get_string ( "archivo", "local_feria" ) . ':  </td><td> <input type="file" name="archivo" id=”archivo” />*</td></tr>
+<tr><td></td><td><input TYPE="file" name="foto2" id=ï¿½foto2ï¿½ /></td></tr>
+<tr><td></td><td><input TYPE="file" name="foto3" id=ï¿½foto3ï¿½ /></td></tr>
+<tr><td></td><td><input TYPE="file" name="foto4" id=ï¿½foto4ï¿½/></td></tr>
+<tr><td>' . get_string ( "archivo", "local_feria" ) . ':  </td><td> <input type="file" name="archivo" id=ï¿½archivoï¿½ />*</td></tr>
  <tr><td>' . get_string ( "url_video", "local_feria" ) . ':  </td><td><input type="text" name="urlvideo" /></td></tr>
  <tr><td></td><td><p><input name=enviardatos type="submit" value="' . get_string ( "enviar", "local_feria" ) . '" /></p></td><td></td></tr>
 <tr><td></td><td> * ' . get_string ( "campos_obligatorios", "local_feria" ) . '</td></tr></table>
