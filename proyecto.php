@@ -25,7 +25,7 @@
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
 
-include '/feria_locallib.php';
+include 'feria_locallib.php';
 Global $DB;
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance ();
@@ -46,7 +46,7 @@ echo'<form action="buscar.php" method="post" >
 		<tr>
 		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
 		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
+		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
 		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
@@ -155,9 +155,9 @@ foreach ( $consulta as $llave => $dato ) {
 	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
 		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>
 		  	<tr><td> <a href="'.$urlarchivo.'" >' . get_string ( "ver_pdf", "local_feria" ) . '</a></td></tr>';
-	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="Me Gusta" name="1"> </td></tr>';
-	echo '<tr><td><textarea name="comentario" rows="4" cols="65">Comente... </textarea></td> </tr>';
-	echo '<tr><td align="right"><input type="submit" name="0" value="Comentar"></td></tr>';
+	echo '<tr><td>'.$cantidadMG.'<input type="submit" value="' . get_string ( "MG", "local_feria" ) . '" name="1"> </td></tr>';
+	echo '<tr><td><textarea placeholder="' . get_string ( "escribir_comentario", "local_feria" ) . '" name="comentario" rows="4" cols="65"></textarea></td> </tr>';
+	echo '<tr><td align="right"><input type="submit" name="0" value="' . get_string ( "comentar", "local_feria" ) . '"></td></tr>';
 	echo '</form></table>';
 	echo '</div>';
 	echo'<table>';

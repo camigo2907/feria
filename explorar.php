@@ -61,7 +61,7 @@ echo'<form action="buscar.php" method="post" >
 		<tr>
 		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
 		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
+		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
 		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
@@ -114,7 +114,7 @@ foreach ( $consulta1 as $llave => $dato ) {
 					$PPC [$llave2] [$llave3] ['1'] = $llave3;
 					$PPC [$llave2] [$llave3] ['2'] = $dato3;
 				}
-				// print_r( $PPC[$llave2] );
+				//print_r( $PPC[$llave2] );
 				// se muestran los datos obtenidos ordenados en una tabla
 
 				$urlvermas= new moodle_url ( '/local/feria/proyecto.php?id='. $PPC [$llave2] ['id'] ['2'].'' );

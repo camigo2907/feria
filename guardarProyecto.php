@@ -23,7 +23,7 @@
  */
 // Minimum for Moodle to work, the basic libraries
 require "../../config.php"; // archivo que ayuda a subir los datos del formulario a BBDD
-include '/feria_locallib.php'; // se incluyen dentro del codigo diferentes funciones
+include 'feria_locallib.php'; // se incluyen dentro del codigo diferentes funciones
 include('Style.css');
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance();
@@ -43,7 +43,7 @@ echo'<form action="buscar.php" method="post" >
 		<tr>
 		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
 		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
+		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
 		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
@@ -76,8 +76,7 @@ if (isset ( $_REQUEST ['nombre'])
 	 //var_dump ( $_FILES );
 	 //var_dump ( $_REQUEST );
 	// Datos obtenidos de la foto 1
-	$nombre1 = $_FILES ['foto1'] ['name'];
-	echo cambioNombreArchivo($nombre1);
+	$nombre1 = cambioNombreArchivo($_FILES ['foto1'] ['name']);
 	$tempNombre1 = $_FILES ['foto1'] ['tmp_name'];
 	$tamano1 = $_FILES ['foto1'] ['size'];
 	$tipo1 = $_FILES ['foto1'] ['type'];
@@ -115,9 +114,9 @@ if (isset ( $_REQUEST ['nombre'])
 	// idea para cambiar la cosa del null es poner las $proyecto->urlfoto dentro del if
 	// Insertamos en la BBDD
 	$descripcion=$_REQUEST['descripcion'];
-	echo cambioDescripcion($descripcion);
+
 	$proyecto = new stdClass ();
-	$proyecto->descripcion = cambioDescripcion($_REQUEST ['descripcion']);
+	$proyecto->descripcion = $_REQUEST ['descripcion'];
 	$proyecto->nombre = $_REQUEST ['nombre'];
 	$proyecto->categoria = $_REQUEST ['categoria'];
 	$proyecto->urlarchivo = $CFG->wwwroot . '/local/feria/' . $urlarchivo;

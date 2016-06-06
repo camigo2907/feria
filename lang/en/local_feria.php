@@ -86,3 +86,9 @@ $string['cat_pert']= "Project's category:";
 $string['busqueda']="Search results:";
 $string["no_encontrado"]="Your search returned no results";
 $string["no_existen"]="There is no project in our database";
+
+//proyecto
+$string["escribir_comentario"]="Add a comment...";
+$string["comentar"]="Comment";
+$string["MG"]="Like";
+$string["ver_pdf"]="See PDF";
