@@ -135,7 +135,7 @@ foreach ( $consulta as $llave => $dato ) {
 			   	ORDER BY r.id DESC';
 	$consulta2 = $DB->get_records_sql ( $sql2 );
 	$l=0;
-	if($_REQUEST ['0']=='Comentar')
+	if($_REQUEST ['0']== get_string ( "comentar", "local_feria" ) )
 	{
 		$comentario[$l]['firstname']= $USER->firstname;
 		$comentario[$l]['lastname']= $USER->lastname;
@@ -180,7 +180,7 @@ if(isset($_REQUEST ['1']))
 	$retroalimentacion-> comentario=NULL;
 	$DB->insert_record ( 'retroalimentacion', $retroalimentacion );
 }
-if($_REQUEST ['0']=='Comentar')
+if($_REQUEST ['0']==  get_string ( "comentar", "local_feria" ) )
 {
 	$retroalimentacion = new stdClass ();
 	$retroalimentacion->userid = $USER->id;
