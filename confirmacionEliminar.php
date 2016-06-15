@@ -21,10 +21,10 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
-// librer�as necesarias para que trabaje moodle
+// librerias necesarias para que trabaje moodle y este codigo
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
-
+include '/feria_locallib.php';
 Global $DB;
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance ();
@@ -32,18 +32,19 @@ $PAGE->set_context ( $context );
 
 // Check that user is logued in the course.
 require_login ();
+
 // Page navigation and URL settin;
-$PAGE->set_url ( new moodle_url ( '/local/feria/explorar.php' ) );
+$PAGE->set_url ( new moodle_url ( '/local/feria/proyecto.php' ) );
 $PAGE->set_pagelayout ( "incourse" );
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
-// Esto sirve para el menu que existe arriba en la pagina
 
+// El siguiente "echo" despliega el menu que se ve en el header
 echo'<form action="buscar.php" method="post" >
 		<table align="center">
 		<tr>
 		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
 		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
+		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
 		<td><input type="image" src="lupa.png" width="25" height="25></td>
 		<td><a href=""></a></td>
 		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
@@ -51,49 +52,17 @@ echo'<form action="buscar.php" method="post" >
 		</tr>
 		</table>
 		</form>';
-
 echo $OUTPUT->header ();
-$idusuario=$_REQUEST['id'];
-$otrouser = $DB->get_record('user', array('id'=>$idusuario));
-$sql1 = 'SELECT u.firstname, u.lastname, u.email,sum(r.tipo) as MG, -sum(r.tipo-1) as COMENTARIO, u.country, u.city
-				FROM mdl_retroalimentacion r
-				JOIN mdl_user u ON r.userid = u.id 
-                WHERE u.id='.$idusuario.'';
-
-$consulta1 = $DB->get_records_sql ( $sql1 );
-if (empty($consulta1))
-{
-	echo get_string("no_existe_usuario","local_feria");
-}
-else {
-
-	foreach ( $consulta1 as $llave1 => $dato1 ) {
-		foreach ( $dato1 as $llave2 => $dato2 ) {
-		$datos[$llave2]=$dato2;
-		}} 
-    }
-echo '<table width=100%>
-	<tr bgcolor=#e0e2e5>';
-echo '<td width=35% align="center"><h3>'.$datos['firstname'].' '. $datos['lastname'].'</h3></td>';
-echo '<td></td>';
-echo '</tr></table>';
-echo '<table width=100%><tr>';
-echo'<tr>';
-echo '<td align="center" width=35%>';
- echo $OUTPUT->user_picture($otrouser, array('size' => 280, 'link'=>false, 'class'=>'fotoperfil', 'alttext'=>"hola"));
- echo '</td>';
-  echo '<td width=65%>';
- echo '<h6>Email:</h6> <h5> '.$datos['email'].'</h5>';
- echo '<h6>Ciudad:</h6> <h5>'.$datos['city'].'</h5>';
- echo '<h6>Pais:</h6> <h5>'.$datos['country'].'</h5>';
- echo '<h6>Paginas favoritas:</h6> <h5>'.$datos['mg'].' </h5>';
- echo '<h6>Comentarios Realizados:</h6><h5>'.$datos['comentario'].'</h5></td>';
- echo '</tr><tr>';
- echo '<td></td><td>';
- if($idusuario==$USER->id){
- echo'<a href="'.new moodle_url("/local/feria/misProyectos.php").'" class="b_e">'.get_string("mis_proyectos","local_feria").'</a>';
- }
- echo'</td>';
- echo '</tr></table></font>';
-// Show the page footer
+// Se recibe el id del proyecto que se desea eliminar y se elimina con el delete_records
+// Es importante eliminar tanto el proyecto, como la retroalimentacion que recibio este.
+$idProyecto=$_REQUEST['id'];
+$DB->delete_records ('retroalimentacion', array('proyectoid'=>$idProyecto) );
+$DB->delete_records ('proyecto', array('id'=>$idProyecto) );
+// Se crea un url para poder volver a mis proyectos y se confirma que se elimino el proyecto deseado
+$urlatras= new moodle_url ( '/local/feria/misProyectos.php' );
+echo '<div align="center">';
+echo 'Su proyecto se ha eliminado con exito.';
+echo ' <a href= "' . $urlatras . '" class="b_e">' . get_string ( 'atras', 'local_feria' ) . '</a>';
+echo '</div>';
+// Finalmente se muestran los datos del footer
 echo $OUTPUT->footer ();

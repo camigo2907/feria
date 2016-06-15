@@ -100,7 +100,7 @@ foreach ( $consulta1 as $llave => $dato ) {
 		// Si se apreta el boton entonces se desplegara una lista con los datos
 		if (isset ( $_REQUEST [$dato1] )) {
 			// la siguiente consulta permite obtener algunos datos de los proyectos que son de la categoria que esta dentro de $dato1
-			$sql2 = 'SELECT p.id, p.nombre, u.firstname, u.lastname, p.categoria, p.urlfoto1
+			$sql2 = 'SELECT p.id, p.nombre, u.firstname, u.lastname, p.categoria, p.urlfoto1, p.userid
 				FROM mdl_proyecto p 
 				JOIN mdl_user u 
 				ON p.userid = u.id 
@@ -118,12 +118,13 @@ foreach ( $consulta1 as $llave => $dato ) {
 				// se muestran los datos obtenidos ordenados en una tabla
 
 				$urlvermas= new moodle_url ( '/local/feria/proyecto.php?id='. $PPC [$llave2] ['id'] ['2'].'' );
+				$urlperfil= new moodle_url ( '/local/feria/perfil.php?id='. $PPC [$llave2] ['userid'] ['2'].'' );
 				
 				echo "<table>";
 				echo '<tr>
 		  			 <td><img src="' . $PPC [$llave2] ['urlfoto1'] ['2'] . '"  class="fotoexplorar"></td>';
 				echo '<td align="center"><h2>' . $PPC [$llave2] ['nombre'] ['2'] . '</h2>
-			          <br> ' . get_string ( "realizado", "local_feria" ) . ' ' . $PPC [$llave2] ['firstname'] ['2'] . ' ' . $PPC [$llave2] ['lastname'] ['2'] . '
+			          <br> ' . get_string ( "realizado", "local_feria" ) . '<a href= "' . $urlperfil . '"> ' . $PPC [$llave2] ['firstname'] ['2'] . ' ' . $PPC [$llave2] ['lastname'] ['2'] . '</a>
 			          <br>  ' . get_string ( "cat_pert", "local_feria" ) . '' . get_string ( $PPC [$llave2] ['categoria'] ['2'], "local_feria" ) . ' 
 			          <br><a href= "' . $urlvermas . '">' . get_string ( 'ver', 'local_feria' ) . '</a>
 				 	  </td>

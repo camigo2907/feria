@@ -45,7 +45,7 @@
 
 }
 .b_e {
-  background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);
+	background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: -moz-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: -ms-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: -o-linear-gradient(top, #ffffff, #f0f0f0);
@@ -54,16 +54,16 @@
   -moz-border-radius: 3;
   border-radius: 3px;
   color: #423f42;
-  font-size: 20px;
+  font-size: small;
+   font-weight: bold;
   background: #ffffff;
   height:60px;
   line-height:60px;
   width: 900px;
   padding: 10px 20px 10px 20px;
-  border: solid #9ea3a6 1px;
+  border: solid #e0e2e5 1px;
   text-decoration: none;
 }
-
 .b_e:hover {
   background: #ffffff;
   background-image: -webkit-linear-gradient(top, #ffffff, #f0f0f0);
@@ -72,6 +72,7 @@
   background-image: -o-linear-gradient(top, #ffffff, #f0f0f0);
   background-image: linear-gradient(to bottom, #ffffff, #f0f0f0);
   text-decoration: none;
+  color: #423f42;
 }
 .slides{
 	width:40%;
@@ -117,9 +118,6 @@ width:40%;
 width:60%;
 
 }
-
-
-
 .imagensola{
 	 width: 376px;
       height: 211px;
@@ -129,8 +127,10 @@ width:60%;
       
 	}
 .fotoexplorar img{
-		 width: 100%;
-      
-	}
+		 width: 100%;	}
+.fotoperfil {
+	border: solid #e0e2e5 10px;
+	border-radius: 50px;
+}
 
 </style>

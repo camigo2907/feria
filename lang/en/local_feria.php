@@ -92,3 +92,7 @@ $string["escribir_comentario"]="Add a comment...";
 $string["comentar"]="Comment";
 $string["MG"]="Like";
 $string["ver_pdf"]="See PDF";
+
+
+//mi perfil
+$string["mis_proyectos"]= "See my projects";
