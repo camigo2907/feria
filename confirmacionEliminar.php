@@ -39,19 +39,8 @@ $PAGE->set_pagelayout ( "incourse" );
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 
 // El siguiente "echo" despliega el menu que se ve en el header
-echo'<form action="buscar.php" method="post" >
-		<table align="center">
-		<tr>
-		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
-		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" value="'.get_string("buscar","local_feria").'" align ="center"></td>
-		<td><input type="image" src="lupa.png" width="25" height="25></td>
-		<td><a href=""></a></td>
-		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
-		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
-		</tr>
-		</table>
-		</form>';
+$idusuario=$USER->id;
+echo encabezado($idusuario);
 echo $OUTPUT->header ();
 // Se recibe el id del proyecto que se desea eliminar y se elimina con el delete_records
 // Es importante eliminar tanto el proyecto, como la retroalimentacion que recibio este.
@@ -61,8 +50,8 @@ $DB->delete_records ('proyecto', array('id'=>$idProyecto) );
 // Se crea un url para poder volver a mis proyectos y se confirma que se elimino el proyecto deseado
 $urlatras= new moodle_url ( '/local/feria/misProyectos.php' );
 echo '<div align="center">';
-echo 'Su proyecto se ha eliminado con exito.';
-echo ' <a href= "' . $urlatras . '" class="b_e">' . get_string ( 'atras', 'local_feria' ) . '</a>';
+echo get_string("confirmacion_eliminar","local_feria");
+echo ' <a href= "' . $urlatras . '" class="b_e">' . get_string ( 'volver', 'local_feria' ) . '</a>';
 echo '</div>';
 // Finalmente se muestran los datos del footer
 echo $OUTPUT->footer ();

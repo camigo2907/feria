@@ -21,10 +21,9 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *         
  */
-// librer�as necesarias para que trabaje moodle
+// librerias necesarias para que trabaje moodle
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
-
 include 'feria_locallib.php';
 Global $DB;
 // Moodle pages require a context, that can be system, course or module (activity or resource)
@@ -41,21 +40,9 @@ $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 
 // El siguiente "echo" despliega el menu que se ve en el header
 $idusuario = $USER->id;
-echo '<form action="buscar.php" method="post" >
-		<table align="center">
-		<tr>
-		<td><td><a href="' . new moodle_url ( '/local/feria/index.php' ) . '" class="classname"> ' . get_string ( "inicio", "local_feria" ) . ' </a></td>
-		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id=' . $idusuario . '' ) . '" class="classname"> ' . get_string ( "mi_perfil", "local_feria" ) . ' </a> </td>
-		<td><input type="text" name="buscar" placeholder="' . get_string ( "buscar", "local_feria" ) . '" align ="center"></td>
-		<td><input type="image" src="lupa.png" width="25" height="25></td>
-		<td><a href=""></a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/FormularioProyecto.php" ) . '" class="classname">' . get_string ( "subir_proyecto", "local_feria" ) . '</a></td>
-		<td><a href="' . new moodle_url ( "/local/feria/explorar.php" ) . '" class="classname">' . get_string ( "explorar", "local_feria" ) . '</a></td>
-		</tr>
-		</table>
-		</form>';
-echo $OUTPUT->header ();
-
+echo encabezado($idusuario);
+echo $OUTPUT-> header();
+// se crea una consulta  para obtener todos los datos de la tabla proyecto, cuando el id del proyecto es el recib
 $idProyecto = $_REQUEST ['id'];
 $sql = 'SELECT p.id, p.nombre, u.firstname, u.lastname, p.categoria, 
 		p.urlfoto1, p.urlfoto2, p.urlfoto3, p.urlfoto4, p.descripcion, p.urlarchivo
@@ -83,11 +70,10 @@ foreach ( $consulta as $llave => $dato ) {
 	if (isset ( $proyecto [$llave] ['urlfoto4'] ['2'] )) {
 		$foto [] = $proyecto [$llave] ['urlfoto4'] ['2'];
 	}
-	// print_r($foto);
 	// termino de arreglo de foto
-	echo '<h2>' . $proyecto [$llave] ['nombre'] ['2'] . '</h2>';
-	
+	// print_r($foto);
 	echo '<div id="div">';
+	echo '<h2>' . $proyecto [$llave] ['nombre'] ['2'] . '</h2>';
 	if (count ( $foto ) == 1) {
 		echo '<img class="imagensola" src="' . $foto ['0'] . '"/>';
 	} else {
@@ -97,18 +83,17 @@ foreach ( $consulta as $llave => $dato ) {
 		}
 		echo '</div>';
 		echo '<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="js/jquery.slides.js"></script>
-	<script>
-      $(".slides").slidesjs({
-      });
-	</script>';
-	}
+    	<script src="js/jquery.slides.js"></script>
+	    <script>
+        $(".slides").slidesjs({
+        });
+	    </script>';
+	    }
 	$sql1 = 'SELECT SUM(r.tipo)
 				FROM mdl_proyecto p
 				JOIN mdl_retroalimentacion r
 		        ON p.id = r.proyectoid
 			   WHERE p.id ="' . $idProyecto . '"';
-	
 	$consulta1 = $DB->get_records_sql ( $sql1 );
 	foreach ( $consulta1 as $llave2 => $dato2 ) {
 		foreach ( $dato2 as $llave3 => $dato3 ) {
@@ -118,29 +103,32 @@ foreach ( $consulta as $llave => $dato ) {
 	if (! isset ( $cantidadMG )) {
 		$cantidadMG = 0;
 	}
-	$MG=false;
+	$MG = false;
 	if (isset ( $_REQUEST ['1'] )) {
 		$cantidadMG = $cantidadMG + 1;
-		$MG=true;
+		$MG = true;
 	}
 	if (isset ( $_REQUEST ['3'] )) {
-		$cantidadMG = $cantidadMG -1;
+		$cantidadMG = $cantidadMG - 1;
 	}
-	$sql2 = 'SELECT r.id, r.comentario, u.firstname, u.lastname
+	$sql2 = 'SELECT r.id, r.comentario, u.firstname, u.lastname, r.userid
 				FROM mdl_user u
 				JOIN mdl_retroalimentacion r
 		        ON u.id = r.userid
 			   WHERE r.proyectoid ="' . $idProyecto . '" AND r.tipo=0
 			   	ORDER BY r.id DESC';
 	$consulta2 = $DB->get_records_sql ( $sql2 );
-	$l = 0;
-	if ($_REQUEST ['0'] == get_string ( "comentar", "local_feria" )) {
+	
+		if ($_REQUEST ['0'] == get_string ( "comentar", "local_feria" ))
+		{
+		$l = 0;
 		$comentario [$l] ['firstname'] = $USER->firstname;
 		$comentario [$l] ['lastname'] = $USER->lastname;
 		$comentario [$l] ['comentario'] = $_REQUEST ['comentario'];
-	}
+		$comentario [$l] ['userid'] = $USER->id;
+	    }
 	foreach ( $consulta2 as $llave4 => $dato4 ) {
-		$l ++;
+		$l++;
 		foreach ( $dato4 as $llave5 => $dato5 ) {
 			$comentario [$l] [$llave5] = $dato5;
 		}
@@ -156,35 +144,48 @@ foreach ( $consulta as $llave => $dato ) {
 	$urlarchivo = $partes [count ( $partes ) - 1];
 	$urlarchivo = $CFG->wwwroot . '/local/feria/archivos/' . $urlarchivo;
 	// print_r($comentario);
-	echo '<div id="div2"><table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
-	echo '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
+	$infoproyecto = '<table align="center"><form action="proyecto.php?id=' . $idProyecto . '" method="post" >';
+	$infoproyecto .= '<tr><td>' . get_string ( "realizado", "local_feria" ) . '     ' . $proyecto [$llave] ['firstname'] ['2'] . ' ' . $proyecto [$llave] ['lastname'] ['2'] . '</td></tr> 
 		  <tr><td>' . get_string ( "descripcion", "local_feria" ) . ':  ' . $proyecto [$llave] ['descripcion'] ['2'] . '</td></tr>
 		  	<tr><td> <a href="' . $urlarchivo . '" >' . get_string ( "ver_pdf", "local_feria" ) . '</a></td></tr>';
-	echo'<tr><td>'.$cantidadMG . ' <IMG SRC="MG.PNG" width=20>';
-	
-	if (empty ( $consulta3 )&& !($MG)) {
-		echo '<input type="submit" value="' . get_string ( "MG", "local_feria" ) . '" name="1">';
+	$infoproyecto .= '<tr><td>' . $cantidadMG . ' <IMG SRC="MG.PNG" width=20>';
+	// ve si es que ya puse me gusta
+	if (empty ( $consulta3 ) && ! ($MG)) {
+		$infoproyecto .= '<input type="submit" value="' . get_string ( "MG", "local_feria" ) . '" name="1">';
 	} else {
-		if(isset ( $_REQUEST ['3'] ))
-		{echo '<input type="submit" value="' . get_string ( "MG", "local_feria" ) . '" name="1">';
+		if (isset ( $_REQUEST ['3'] )) {
+			$infoproyecto .= '<input type="submit" value="' . get_string ( "MG", "local_feria" ) . '" name="1">';
+		} else {
+			$infoproyecto .= '<input type="submit" value="' . get_string ( "NOMG", "local_feria" ) . '" name="3">';
+		}
 	}
-	else{
-		echo '<input type="submit" value="' . get_string ( "NOMG", "local_feria" ) . '" name="3">';
-	}
-	}
-	echo '</td></tr>';
-	echo '<tr><td><textarea placeholder="' . get_string ( "escribir_comentario", "local_feria" ) . '" name="comentario" rows="4" cols="65"></textarea></td> </tr>';
-	echo '<tr><td align="right"><input type="submit" name="0" value="' . get_string ( "comentar", "local_feria" ) . '"></td></tr>';
-	echo '</form></table>';
+	$infoproyecto .= '</td></tr>';
+	$infoproyecto .= '<tr><td><textarea placeholder="' . get_string ( "escribir_comentario", "local_feria" ) . '" name="comentario" rows="4" cols="65"></textarea></td> </tr>';
+	$infoproyecto .= '<tr><td align="right"><input type="submit" name="0" value="' . get_string ( "comentar", "local_feria" ) . '"></td></tr>';
+	$infoproyecto .= '</form></table>';
+	$infoproyecto .= '';
+	echo html_writer::div($infoproyecto, '', array('id'=>'div2'));
 	echo '</div>';
-	echo '<table>';
-	for($l = 0; $l < count ( $comentario ) + 1; $l ++) {
-		echo '<tr><td>' . $comentario [$l] ["firstname"] . ' ' . $comentario [$l] ["lastname"] . '  </td><td>' . $comentario [$l] ["comentario"] . '</td></tr>';
+	echo '<div id="div3"><table style="margin-left:30%;">';
+	$cant_comentario = count ( $comentario ) + 1;
+	$l = 1;
+	if (isset ( $_REQUEST ['0'] )) {
+		$cant_comentario = count ( $comentario );
+		$l = 0;
 	}
-	echo "</table>";
-	echo '</div>';
+	// se muestran los comentarios
+	for($l = $l; $l < $cant_comentario; $l ++) {
+		echo '<tr><td width=5% > ';
+		$i = $comentario [$l] ['userid'];
+		$otrouser = $DB->get_record ( 'user', array (
+				'id' => $i 
+		) );
+		echo $OUTPUT->user_picture ( $otrouser );
+		echo '</td><td width=15% style="min-width: 150px;"><h6>' . $comentario [$l] ["firstname"] . ' ' . $comentario [$l] ["lastname"] . ' </h6> </td><td width=80% style="min-width: 200px;"><h5>' . $comentario [$l] ["comentario"] . '</h5></td></tr>';
+	}
+	echo "</table></div>";
 }
-
+// se guarda en la base de datos si puso me gusta, o si comento
 if (isset ( $_REQUEST ['1'] )) {
 	$retroalimentacion = new stdClass ();
 	$retroalimentacion->userid = $USER->id;
@@ -201,8 +202,12 @@ if ($_REQUEST ['0'] == get_string ( "comentar", "local_feria" )) {
 	$retroalimentacion->comentario = $_REQUEST ['comentario'];
 	$DB->insert_record ( 'retroalimentacion', $retroalimentacion );
 }
+// se elimina el gusta que puse
 if (isset ( $_REQUEST ['3'] )) {
-	$DB->delete_records ('retroalimentacion', array('proyectoid'=>$idProyecto,'userid'=>$id ) );
+	$DB->delete_records ( 'retroalimentacion', array (
+			'proyectoid' => $idProyecto,
+			'userid' => $id
+	) );
 }
 
 // Finalmente se muestran los datos del footer

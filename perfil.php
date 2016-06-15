@@ -24,7 +24,7 @@
 // librer�as necesarias para que trabaje moodle
 require_once (dirname ( dirname ( dirname ( __FILE__ ) ) ) . '/config.php');
 include ('Style.css');
-
+include 'feria_locallib.php';
 Global $DB;
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance ();
@@ -38,23 +38,11 @@ $PAGE->set_pagelayout ( "incourse" );
 $PAGE->set_title ( get_string ( "titulo", "local_feria" ) );
 // Esto sirve para el menu que existe arriba en la pagina
 
-echo'<form action="buscar.php" method="post" >
-		<table align="center">
-		<tr>
-		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
-		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
-		<td><input type="image" src="lupa.png" width="25" height="25></td>
-		<td><a href=""></a></td>
-		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
-		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
-		</tr>
-		</table>
-		</form>';
-
+$idusuario=$USER->id;
+echo encabezado($idusuario);
 echo $OUTPUT->header ();
 $idusuario=$_REQUEST['id'];
-$otrouser = $DB->get_record('user', array('id'=>$idusuario));
+
 $sql1 = 'SELECT u.firstname, u.lastname, u.email,sum(r.tipo) as MG, -sum(r.tipo-1) as COMENTARIO, u.country, u.city
 				FROM mdl_retroalimentacion r
 				JOIN mdl_user u ON r.userid = u.id 
@@ -80,14 +68,15 @@ echo '</tr></table>';
 echo '<table width=100%><tr>';
 echo'<tr>';
 echo '<td align="center" width=35%>';
- echo $OUTPUT->user_picture($otrouser, array('size' => 280, 'link'=>false, 'class'=>'fotoperfil', 'alttext'=>"hola"));
+$otrouser = $DB->get_record('user', array('id'=>$idusuario)); 
+echo $OUTPUT->user_picture($otrouser, array('size' => 280, 'link'=>false, 'class'=>'fotoperfil', 'alttext'=>"hola"));
  echo '</td>';
   echo '<td width=65%>';
- echo '<h6>Email:</h6> <h5> '.$datos['email'].'</h5>';
- echo '<h6>Ciudad:</h6> <h5>'.$datos['city'].'</h5>';
- echo '<h6>Pais:</h6> <h5>'.$datos['country'].'</h5>';
- echo '<h6>Paginas favoritas:</h6> <h5>'.$datos['mg'].' </h5>';
- echo '<h6>Comentarios Realizados:</h6><h5>'.$datos['comentario'].'</h5></td>';
+ echo '<h6>'.get_string("email","local_feria").'</h6> <h5> '.$datos['email'].'</h5>';
+ echo '<h6>'.get_string("ciudad","local_feria").'</h6> <h5>'.$datos['city'].'</h5>';
+ echo '<h6>'.get_string("pais","local_feria").'</h6> <h5>'.$datos['country'].'</h5>';
+ echo '<h6>'.get_string("pag_fav","local_feria").'</h6> <h5>'.$datos['mg'].' </h5>';
+ echo '<h6>'.get_string("comentarios_hechos","local_feria").'</h6><h5>'.$datos['comentario'].'</h5></td>';
  echo '</tr><tr>';
  echo '<td></td><td>';
  if($idusuario==$USER->id){

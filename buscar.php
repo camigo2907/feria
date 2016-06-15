@@ -23,7 +23,7 @@
 // Minimum for Moodle to work, the basic libraries
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 include('Style.css');
-
+include 'feria_locallib.php';
 // Moodle pages require a context, that can be system, course or module (activity or resource)
 $context = context_system::instance();
 $PAGE->set_context($context);
@@ -38,19 +38,7 @@ $PAGE->set_title(get_string("titulo","local_feria"));
 
 //
 $idusuario=$USER->id;
-echo'<form action="buscar.php" method="post" >
-		<table align="center">
-		<tr>
-		<td><td><a href="'.new moodle_url('/local/feria/index.php').'" class="classname"> '.get_string("inicio","local_feria").' </a></td>
-		<td><td><a href="' . new moodle_url ( '/local/feria/perfil.php?id='.$idusuario.'' ) . '" class="classname"> '.get_string("mi_perfil","local_feria").' </a> </td>
-		<td><input type="text" name="buscar" placeholder="'.get_string("buscar","local_feria").'" align ="center"></td>
-		<td><input type="image" src="lupa.png" width="25" height="25></td>
-		<td><a href=""></a></td>
-		<td><a href="'.new moodle_url("/local/feria/FormularioProyecto.php").'" class="classname">'.get_string("subir_proyecto","local_feria").'</a></td>
-		<td><a href="'.new moodle_url("/local/feria/explorar.php").'" class="classname">'.get_string("explorar","local_feria").'</a></td>
-		</tr>
-		</table>
-		</form>';
+echo encabezado($idusuario);
 // Show the page header
 echo $OUTPUT->header();
 // Here goes the content
