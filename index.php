@@ -37,7 +37,6 @@ require_login();
 $PAGE->set_url(new moodle_url('/local/feria/index.php'));
 $PAGE->set_pagelayout("incourse");
 $PAGE->set_title(get_string("titulo","local_feria"));
-
 //
 $idusuario=$USER->id;
 echo encabezado($idusuario);
@@ -45,6 +44,13 @@ echo encabezado($idusuario);
 echo $OUTPUT->header();
 // Here goes the content
 
+$sql = 'SELECT p.id, p.nombre, u.firstname, u.lastname, p.categoria,p.urlfoto1
+				FROM mdl_proyecto p
+				JOIN mdl_user u
+		        ON p.userid = u.id
+				WHERE p. id ="' . $idProyecto . '"';
+
+$consulta = $DB->get_records_sql ( $sql );
 // Show the page footer
 echo $OUTPUT->footer();
 

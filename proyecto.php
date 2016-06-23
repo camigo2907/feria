@@ -204,9 +204,10 @@ if ($_REQUEST ['0'] == get_string ( "comentar", "local_feria" )) {
 }
 // se elimina el gusta que puse
 if (isset ( $_REQUEST ['3'] )) {
-	$DB->delete_records ( 'retroalimentacion', array (
+	$DB-> delete_records( 'retroalimentacion', array (
 			'proyectoid' => $idProyecto,
-			'userid' => $id
+			'userid' => $id,
+			'tipo'=> '1'
 	) );
 }
 
