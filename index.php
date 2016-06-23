@@ -43,14 +43,37 @@ echo encabezado($idusuario);
 // Show the page header
 echo $OUTPUT->header();
 // Here goes the content
-
-$sql = 'SELECT p.id, p.nombre, u.firstname, u.lastname, p.categoria,p.urlfoto1
+echo '<img src="imagen_index.jpg" width=100%><br>';
+$sql = 'SELECT p.id, p.nombre, p.userid, u.firstname, u.lastname, p.categoria,p. urlfoto1, sum( r.tipo) as cantidad
 				FROM mdl_proyecto p
 				JOIN mdl_user u
 		        ON p.userid = u.id
-				WHERE p. id ="' . $idProyecto . '"';
-
+				JOIN mdl_retroalimentacion r
+		        ON p.id = r.proyectoid
+                group by nombre order by cantidad desc LIMIT 5';
 $consulta = $DB->get_records_sql ( $sql );
+echo '<h4>'.get_string("destacado","local_feria").'</h4>';
+echo "<table width=100%>";
+echo '<tr>';
+foreach ( $consulta as $llave => $dato ) {
+
+	foreach ( $dato as $llave1 => $dato1 ) {
+		$proyecto [$llave1] ['1'] = $llave1;
+		$proyecto [$llave1] ['2'] = $dato1;
+	}
+		$urlvermas= new moodle_url ( '/local/feria/proyecto.php?id='. $proyecto  ['id'] ['2'].'' );
+		$urlperfil= new moodle_url ( '/local/feria/perfil.php?id='. $proyecto  ['userid'] ['2'].'' );
+		echo '<td align="center"><img src="' . $proyecto ['urlfoto1']['2'] . '"width="150" height="100" ><br>';
+		echo   ' <br><b><a href= "' . $urlvermas . '">' .$proyecto  ['nombre'] ['2'] . '</a></b>
+				<br> ' . get_string ( "realizado", "local_feria" ) . '<a href= "' . $urlperfil . '"> ' . $proyecto  ['firstname'] ['2'] . ' ' . $proyecto  ['lastname'] ['2'] . '</a>
+			  <br>  ' . get_string ( "cat_pert", "local_feria" ) . '' . get_string ( $proyecto  ['categoria'] ['2'], "local_feria" ) . '
+			 
+			 </td>';
+	
+}
+echo'</tr>';
+echo '</table>';
+		          
 // Show the page footer
 echo $OUTPUT->footer();
 

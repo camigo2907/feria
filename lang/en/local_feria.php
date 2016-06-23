@@ -90,17 +90,17 @@ $string["no_existen"]="There is no project in our database";
 //proyecto
 $string["escribir_comentario"]="Add a comment...";
 $string["comentar"]="Comment";
+$string["NOMG"]="Dislike";
 $string["MG"]="Like";
 $string["ver_pdf"]="See PDF";
 
 
-//Perfil
+//mi perfil
 $string["mis_proyectos"]= "See my projects";
-$string["email"]="Email: ";
-$string["ciudad"]="City: ";
-$string["pais"]="Country: ";
-$string["pag_fav"]="Favorites page: ";
-$string["comentarios_hechos"]="Number of comments: ";
+$string["ciudad"]="City";
+$string["pais"]="Country";
+$string["pag_fav"]="Favorites page";
+$string["comentarios_hechos"]="Number of comments";
 
 // Mis proyectos
 $string["eliminar"]="Eliminate";
@@ -109,7 +109,7 @@ $string["eliminar"]="Eliminate";
 $string["advertencia01"]="To eliminate the proyect ";
 $string["advertencia02"]=", press continue";
 $string["continuar"]="Continue";
-$string["volver"]="Go back";
-
-//confirmacionEliminar
+$string["volver"]="Back";
 $string["confirmacion_eliminar"]="The proyect has been eliminated without problem";
+//index
+$string["destacado"]="More popular:";
